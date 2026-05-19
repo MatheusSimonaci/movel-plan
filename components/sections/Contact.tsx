@@ -19,7 +19,7 @@ export function Contact() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
-              href="https://wa.me/5521999999999" 
+              href="https://wa.me/5521992032834" 
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -31,7 +31,7 @@ export function Contact() {
               Conversar no WhatsApp
             </a>
             <a 
-              href="tel:+5521999999999" 
+              href="tel:+5521992032834" 
               className={cn(
                 buttonVariants({ size: "lg", variant: "outline" }),
                 "w-full sm:w-auto text-lg px-12 rounded-full border-white/10 text-white hover:bg-white/5 h-16"

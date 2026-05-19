@@ -170,7 +170,7 @@ export function PortfolioMovelPlan() {
 
                 <div className="space-y-4">
                   <a 
-                    href="https://wa.me/5521999999999" 
+                    href="https://wa.me/5521992032834" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-full py-4 bg-primary text-primary-foreground rounded-full font-bold hover:bg-primary/90 transition-transform active:scale-95"

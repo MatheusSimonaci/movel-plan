@@ -61,16 +61,16 @@ export function HeroMovelPlan({ content, videoUrl, fallbackImageUrl }: HeroMovel
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
       </motion.div>
 
-      <div className="container relative z-10 px-4 md:px-6 mx-auto flex flex-col items-center text-center">
+      <div className="container relative z-10 px-4 md:px-6 mx-auto h-full flex flex-col justify-end pb-24 md:pb-32">
         <motion.div
           style={{ y: yText, opacity: opacityText }}
-          className="max-w-4xl"
+          className="max-w-3xl text-left"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-8xl font-bold tracking-tight mb-6 text-white leading-[1.1]"
+            className="text-5xl md:text-8xl font-bold tracking-tight mb-6 text-white leading-[1.05]"
           >
             {content.headline}
           </motion.h1>
@@ -79,7 +79,7 @@ export function HeroMovelPlan({ content, videoUrl, fallbackImageUrl }: HeroMovel
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-lg md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto font-light"
+            className="text-lg md:text-2xl text-white/80 mb-10 max-w-xl font-light leading-relaxed"
           >
             {content.subheadline}
           </motion.p>
@@ -88,25 +88,16 @@ export function HeroMovelPlan({ content, videoUrl, fallbackImageUrl }: HeroMovel
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4"
           >
             <a 
               href="#portfolio" 
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "text-lg px-8 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105"
+                "text-lg px-10 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 h-16"
               )}
             >
               {content.primaryButton}
-            </a>
-            <a 
-              href="#contato" 
-              className={cn(
-                buttonVariants({ size: "lg", variant: "outline" }),
-                "text-lg px-8 rounded-full border-white/20 text-white hover:bg-white/10 transition-all"
-              )}
-            >
-              {content.secondaryButton}
             </a>
           </motion.div>
         </motion.div>

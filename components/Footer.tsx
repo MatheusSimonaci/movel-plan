@@ -3,12 +3,21 @@ export function Footer() {
     <footer className="border-t border-white/5 bg-black py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <span className="text-xl font-bold tracking-tighter text-white uppercase">
-              Móvel<span className="text-primary">Plan</span>
-            </span>
-            <p className="text-sm text-zinc-500">
-              Excelência em móveis planejados sob medida.
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                <img 
+                  src="/assets/movel-plan/profile-logo.webp" 
+                  alt="Móvel Plan Logo" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="text-xl font-bold tracking-tighter text-white uppercase">
+                Móvel<span className="text-primary">Plan</span>
+              </span>
+            </div>
+            <p className="text-sm text-zinc-500 max-w-xs text-center md:text-left">
+              Especialistas em transformar ambientes com móveis planejados de alto padrão.
             </p>
           </div>
           
@@ -26,20 +35,12 @@ export function Footer() {
               Instagram
             </a>
             <a 
-              href="#" 
+              href="https://wa.me/5521999999999" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-sm text-zinc-400 hover:text-primary transition-colors"
             >
               WhatsApp
-            </a>
-            <a 
-              href="#" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-sm text-zinc-400 hover:text-primary transition-colors"
-            >
-              Facebook
             </a>
           </div>
         </div>

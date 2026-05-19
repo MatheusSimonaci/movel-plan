@@ -1,56 +1,45 @@
-# Móvel Plan — Premium Furniture Template
+# Móvel Plan — V1 Portfolio-First Website
 
-Este é um modelo de website premium desenvolvido para a **Móvel Plan**, focado em conversão e experiência visual de alta qualidade para o nicho de móveis planejados.
+Este é o website V1 da **Móvel Plan**, redesenhado como uma experiência focada exclusivamente em portfolio. O objetivo é demonstrar autoridade através de projetos reais concluídos, utilizando mídia extraída diretamente do perfil oficial da marca.
 
-## 🚀 Tecnologias
+## 🚀 Status V1 (2026-05-19)
 
-- **Framework:** Next.js 16 (App Router)
-- **Estilização:** Tailwind CSS 4
-- **Animações:** Framer Motion
-- **Ícones:** Lucide React
-- **Scroll Suave:** Lenis
+- **Portfolio-First:** Removidas seções de marketing genérico (depoimentos, estatísticas não verificadas, textos longos).
+- **Mídia Real:** Integrados reels e imagens reais do Instagram em alta qualidade.
+- **Minimalismo:** Design focado na visualização do produto com cópia funcional e curta.
+- **Performance:** Build de produção verificado com `npm run build` (Next.js 16.2.6).
 
-## ✨ Funcionalidades
+## ✨ Funcionalidades Principais
 
-- **Hero Section com Vídeo:** Suporte para background em vídeo mobile-first.
-- **Portfolio Visual:** Grade de projetos com expansão em lightbox para detalhes.
-- **Linha do Tempo Responsiva:** Visualização clara do processo de customização.
-- **Design Token Discipline:** Cores e espaçamentos centralizados para fácil customização.
-- **Performance:** Otimizado para Lighthouse 90+ em Performance e Acessibilidade.
-- **SEO Ready:** Metadados, sitemap e robots.txt configurados.
+- **Hero Cinemático:** Background em vídeo (reel) com headline de impacto e CTA direto para o portfolio.
+- **Grade de Portfolio Dinâmica:** Filtros por categoria (Salas, Quartos, Cozinhas, Banheiros) e suporte nativo a vídeo no grid.
+- **Visualização de Detalhes:** Modal expandido com materiais utilizados e link direto para o post original no Instagram.
+- **ConversãoWhatsApp:** CTA de orçamento simplificado e persistente.
 
 ## 🛠️ Como Customizar
 
-### Conteúdo
+### Conteúdo e Portfolio
 
-Todo o conteúdo do site está centralizado em `lib/content/movel-plan.ts`. Para alterar textos, estatísticas ou passos do processo, edite este arquivo.
+A fonte de verdade para o conteúdo e os itens do portfolio é o arquivo:
+`lib/content/movel-plan.ts`
 
-### Cores e Temas
+Cada item do portfolio suporta:
+- `video`: URL para o arquivo MP4.
+- `poster`: Imagem de fallback/capa.
+- `materials`: Lista de materiais/acabamentos (ex: MDF Ares, Off White).
+- `instagramUrl`: Link de procedência para o post original.
 
-As cores principais estão definidas como variáveis CSS em `app/globals.css`. O sistema utiliza o `@theme` do Tailwind 4.
+### Atendimento
 
-### Imagens e Vídeos
+Os links de WhatsApp e Telefone estão centralizados nos componentes `Header`, `Footer` e `Contact`.
 
-Para alterar as imagens do portfolio ou o vídeo do hero, atualize as URLs em `lib/content/movel-plan.ts` ou passe as props diretamente no `app/page.tsx`.
+## 📦 Verificação Técnica
 
-## 📦 Desenvolvimento e Deploy
-
-### Local
-
-```bash
-npm install
-npm run dev
-```
-
-### Build
-
-```bash
-npm run build
-```
-
-### Deploy
-
-O projeto está configurado para deploy imediato na **Vercel**. Basta conectar o repositório e as configurações padrão do Next.js serão aplicadas.
+O template atende aos critérios de:
+1. **Instalação:** `npm install` sem erros.
+2. **Desenvolvimento:** `npm run dev` funcional.
+3. **Build:** `npm run build` gerando estáticos otimizados com sucesso.
+4. **Responsividade:** Testado em resoluções mobile e desktop.
 
 ---
 

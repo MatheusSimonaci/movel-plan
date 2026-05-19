@@ -1,0 +1,138 @@
+[
+  {
+    "kind": "logo",
+    "shortcode": "profile-logo",
+    "file": "public/assets/movel-plan/profile-logo.webp",
+    "bytes": 5536,
+    "width": 320,
+    "height": 320
+  },
+  {
+    "kind": "video",
+    "shortcode": "CuKvDcMtPUc",
+    "file": "public/assets/movel-plan/CuKvDcMtPUc.mp4",
+    "bytes": 787739,
+    "width": null,
+    "height": null
+  },
+  {
+    "kind": "poster",
+    "shortcode": "CuKvDcMtPUc-poster",
+    "file": "public/assets/movel-plan/CuKvDcMtPUc-poster.webp",
+    "bytes": 23762,
+    "width": 540,
+    "height": 960
+  },
+  {
+    "kind": "video",
+    "shortcode": "DYPtgxORg-Q",
+    "file": "public/assets/movel-plan/DYPtgxORg-Q.mp4",
+    "bytes": 3077459,
+    "width": null,
+    "height": null
+  },
+  {
+    "kind": "poster",
+    "shortcode": "DYPtgxORg-Q-poster",
+    "file": "public/assets/movel-plan/DYPtgxORg-Q-poster.webp",
+    "bytes": 29272,
+    "width": 640,
+    "height": 1136
+  },
+  {
+    "kind": "video",
+    "shortcode": "DOOaavrDSEE",
+    "file": "public/assets/movel-plan/DOOaavrDSEE.mp4",
+    "bytes": 5228536,
+    "width": null,
+    "height": null
+  },
+  {
+    "kind": "poster",
+    "shortcode": "DOOaavrDSEE-poster",
+    "file": "public/assets/movel-plan/DOOaavrDSEE-poster.webp",
+    "bytes": 54760,
+    "width": 640,
+    "height": 1136
+  },
+  {
+    "kind": "video",
+    "shortcode": "DOHXUTIknN5",
+    "file": "public/assets/movel-plan/DOHXUTIknN5.mp4",
+    "bytes": 2599114,
+    "width": null,
+    "height": null
+  },
+  {
+    "kind": "poster",
+    "shortcode": "DOHXUTIknN5-poster",
+    "file": "public/assets/movel-plan/DOHXUTIknN5-poster.webp",
+    "bytes": 33236,
+    "width": 640,
+    "height": 1136
+  },
+  {
+    "kind": "video",
+    "shortcode": "DN6JZ30j4nC",
+    "file": "public/assets/movel-plan/DN6JZ30j4nC.mp4",
+    "bytes": 4922594,
+    "width": null,
+    "height": null
+  },
+  {
+    "kind": "poster",
+    "shortcode": "DN6JZ30j4nC-poster",
+    "file": "public/assets/movel-plan/DN6JZ30j4nC-poster.webp",
+    "bytes": 22986,
+    "width": 640,
+    "height": 800
+  },
+  {
+    "kind": "image",
+    "shortcode": "DNeIFtqMFZT",
+    "file": "public/assets/movel-plan/DNeIFtqMFZT.webp",
+    "bytes": 150408,
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "kind": "image",
+    "shortcode": "DNWuNiPp41Z",
+    "file": "public/assets/movel-plan/DNWuNiPp41Z.webp",
+    "bytes": 65950,
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "kind": "image",
+    "shortcode": "DNRSw3zSElq",
+    "file": "public/assets/movel-plan/DNRSw3zSElq.webp",
+    "bytes": 73120,
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "kind": "image",
+    "shortcode": "DNLTwlCO0mS",
+    "file": "public/assets/movel-plan/DNLTwlCO0mS.webp",
+    "bytes": 92508,
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "kind": "image",
+    "shortcode": "DNHI6JYynUW",
+    "file": "public/assets/movel-plan/DNHI6JYynUW.webp",
+    "bytes": 106456,
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "kind": "image",
+    "shortcode": "DNBXkNCSuoA",
+    "file": "public/assets/movel-plan/DNBXkNCSuoA.webp",
+    "bytes": 81692,
+    "width": 1080,
+    "height": 1350
+  }
+]

@@ -1,5 +1,7 @@
 # Móvel Plan — V1 Portfolio-First Design System
 
+**⚠️ SUPERSEDED** — See `DESIGN-SYSTEM.md` for the final design direction (Florense-inspired luxury evolution). This file is retained for reference on V1 cinematic foundation only.
+
 ## Overview
 
 A high-performance, cinematic portfolio experience for **Móvel Plan**. The V1 architecture is designed to establish immediate authority through real project proof, minimizing generic marketing copy in favor of immersive media.

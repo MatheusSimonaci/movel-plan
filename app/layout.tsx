@@ -24,13 +24,13 @@ const cormorantGaramond = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   title: "Móvel Plan | Móveis Planejados Personalizados",
-  description: "Transformamos seu espaço com móveis planejados de alta qualidade e design exclusivo em São Paulo.",
+  description: "Projetos planejados sob medida para Niterói, Barra e Zona Sul. Salas, quartos, cozinhas e banheiros com acabamentos de alto padrão.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: "https://movelplan.com.br",
     title: "Móvel Plan | Móveis Planejados Personalizados",
-    description: "Transformamos seu espaço com móveis planejados de alta qualidade e design exclusivo em São Paulo.",
+    description: "Projetos planejados sob medida para Niterói, Barra e Zona Sul. Salas, quartos, cozinhas e banheiros com acabamentos de alto padrão.",
     siteName: "Móvel Plan",
   },
 };

@@ -17,6 +17,18 @@ export interface ProcessStep {
   description: string;
 }
 
+export interface PortfolioItem {
+  id: string;
+  title: string;
+  category: "Salas" | "Quartos / Closets" | "Cozinhas" | "Banheiros / Lavabos";
+  image: string;
+  video?: string;
+  poster?: string;
+  description: string;
+  materials?: string[];
+  instagramUrl?: string;
+}
+
 export interface MovelPlanContent extends SiteContent {
   trustStats: StatItem[];
   differentiators: DifferentiatorItem[];
@@ -26,70 +38,92 @@ export interface MovelPlanContent extends SiteContent {
     author: string;
     role: string;
   }[];
+  portfolio: PortfolioItem[];
 }
 
 export const movelPlanContent: MovelPlanContent = {
   hero: {
     headline: "Móveis Planejados Personalizados",
     subheadline: "Projetos únicos feitos para você",
-    primaryButton: "Conheça Nossos Projetos",
+    primaryButton: "Ver Projetos",
     secondaryButton: "Solicitar Orçamento",
   },
-  trustStats: [
-    { number: "500+", label: "Projetos Realizados" },
-    { number: "4.9 ⭐", label: "Avaliação Média" },
-    { number: "10+", label: "Anos de Experiência" },
-    { number: "100%", label: "Satisfação Garantida" },
-  ],
-  differentiators: [
-    {
-      title: "Projetos 100% Personalizados",
-      description: "Cada detalhe pensado para o seu espaço e estilo de vida.",
-      icon: "layout",
-    },
-    {
-      title: "Processo Transparente",
-      description: "Acompanhe cada etapa, do projeto à instalação final.",
-      icon: "eye",
-    },
-    {
-      title: "Qualidade de Acabamento",
-      description: "Materiais premium e execução impecável em cada peça.",
-      icon: "award",
-    },
-  ],
-  process: [
-    { step: 1, title: "Consultoria Gratuita", description: "Reunião inicial para entender suas necessidades e desejos." },
-    { step: 2, title: "Projeto Detalhado", description: "Visualização 3D completa do seu futuro ambiente." },
-    { step: 3, title: "Aprovação e Ajustes", description: "Refinamos o projeto até que esteja perfeito para você." },
-    { step: 4, title: "Produção", description: "Fabricação cuidadosa com os melhores materiais do mercado." },
-    { step: 5, title: "Instalação", description: "Montagem profissional com atenção máxima aos detalhes." },
-  ],
-  services: {
-    title: "Nossas Soluções",
-    subtitle: "Ambientes planejados para todos os espaços",
-    items: [
-      { title: "Cozinhas", description: "Funcionalidade e beleza para o coração da casa." },
-      { title: "Dormitórios", description: "Conforto e organização para o seu descanso." },
-      { title: "Salas", description: "Ambientes acolhedores para receber e relaxar." },
-      { title: "Banheiros", description: "Aproveitamento inteligente de pequenos espaços." },
-    ],
-  },
+  trustStats: [],
+  differentiators: [],
+  process: [],
+  testimonials: [],
   about: {
-    tag: "Quem Somos",
-    title: "Excelência em Móveis Sob Medida",
-    description: "Com anos de tradição, a Móvel Plan transforma sonhos em realidade através de projetos exclusivos e execução de alta qualidade.",
+    tag: "",
+    title: "",
+    description: "",
   },
-  testimonials: [
+  services: {
+    title: "",
+    subtitle: "",
+    items: [],
+  },
+  portfolio: [
     {
-      quote: "O projeto da minha cozinha superou todas as expectativas. A qualidade é impressionante.",
-      author: "Maria Silva",
-      role: "Cliente Residencial",
+      id: "living-room-1",
+      title: "Sala planejada",
+      category: "Salas",
+      image: "/assets/movel-plan/DYPtgxORg-Q-poster.webp",
+      video: "/assets/movel-plan/DYPtgxORg-Q.mp4",
+      poster: "/assets/movel-plan/DYPtgxORg-Q-poster.webp",
+      description: "Ambiente sofisticado integrando sala de estar com marcenaria sob medida de alto padrão.",
+      materials: ["MDF Ares", "Off White", "Itapuã"],
+      instagramUrl: "https://www.instagram.com/p/DYPtgxORg-Q/",
     },
     {
-      quote: "Profissionais extremamente competentes e entrega no prazo combinado.",
-      author: "João Pereira",
-      role: "Empresário",
+      id: "kitchen-1",
+      title: "Cozinha planejada",
+      category: "Cozinhas",
+      image: "/assets/movel-plan/DNRSw3zSElq.webp",
+      description: "Cozinha funcional com aproveitamento inteligente de espaços e acabamentos premium.",
+      materials: ["Marcenaria sob medida"],
+      instagramUrl: "https://www.instagram.com/p/DNRSw3zSElq/",
+    },
+    {
+      id: "bedroom-1",
+      title: "Quarto planejado",
+      category: "Quartos / Closets",
+      image: "/assets/movel-plan/DN6JZ30j4nC-poster.webp",
+      video: "/assets/movel-plan/DN6JZ30j4nC.mp4",
+      poster: "/assets/movel-plan/DN6JZ30j4nC-poster.webp",
+      description: "Dormitório com closet integrado, priorizando conforto e organização.",
+      materials: ["Marcenaria sob medida"],
+      instagramUrl: "https://www.instagram.com/p/DN6JZ30j4nC/",
+    },
+    {
+      id: "bathroom-1",
+      title: "Banheiro planejado",
+      category: "Banheiros / Lavabos",
+      image: "/assets/movel-plan/DOHXUTIknN5-poster.webp",
+      video: "/assets/movel-plan/DOHXUTIknN5.mp4",
+      poster: "/assets/movel-plan/DOHXUTIknN5-poster.webp",
+      description: "Banheiro compacto e funcional com marcenaria resistente a áreas úmidas.",
+      materials: ["Ares", "Freijó"],
+      instagramUrl: "https://www.instagram.com/p/DOHXUTIknN5/",
+    },
+    {
+      id: "living-room-2",
+      title: "Sala planejada",
+      category: "Salas",
+      image: "/assets/movel-plan/DOOaavrDSEE-poster.webp",
+      video: "/assets/movel-plan/DOOaavrDSEE.mp4",
+      poster: "/assets/movel-plan/DOOaavrDSEE-poster.webp",
+      description: "Painel de TV e armários integrados para sala de estar contemporânea.",
+      materials: ["MDF Ares", "Freijó"],
+      instagramUrl: "https://www.instagram.com/p/DOOaavrDSEE/",
+    },
+    {
+      id: "bathroom-2",
+      title: "Banheiro planejado",
+      category: "Banheiros / Lavabos",
+      image: "/assets/movel-plan/DNWuNiPp41Z.webp",
+      description: "Soluções inteligentes para banheiros e lavabos de todos os tamanhos.",
+      materials: ["Marcenaria sob medida"],
+      instagramUrl: "https://www.instagram.com/p/DNWuNiPp41Z/",
     },
   ],
 };

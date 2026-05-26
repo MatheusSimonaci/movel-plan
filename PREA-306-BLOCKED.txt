@@ -1,0 +1,40 @@
+PREA-306 STATUS: BLOCKED
+
+Issue: PREA-306 - Recover missing next step PREA-305
+Status: blocked (as of 2026-05-26 CTO heartbeat attempt 2/2)
+
+WORK COMPLETED:
+✅ Analysis complete - PREA-305 correct disposition determined: done
+✅ Evidence committed to git - PREA-306-resolution.md
+✅ Findings documented in /movel-plan/PREA-306-resolution.md
+✅ Memory saved for future reference
+
+FINDING:
+PREA-305 (QA verification of PREA-303 design system V1) should be marked as `done`
+- All verification checks passed
+- Implementation deployed (commit cea1831)
+- No follow-up needed
+
+BLOCKER:
+Paperclip API authentication issue prevents issue status updates
+- API returning "Agent authentication required"
+- Token format mismatch (pcp_ prefix, not JWT format)
+- Affects both REST API and CLI commands
+- Prevents updating PREA-305 to done
+- Prevents updating PREA-306 to done
+
+UNBLOCK OWNER:
+DevOps / Infrastructure team
+
+UNBLOCK ACTION:
+1. Investigate Paperclip API authentication issue
+2. Verify API key/token format and generation
+3. Fix authentication mechanism
+4. Test with sample API call to /api/agents/me
+5. Once fixed, update PREA-305 to status: done (with disposition explanation)
+6. Then update PREA-306 to status: done (recovery complete)
+
+EVIDENCE:
+- Git commit 0e01ac1: Committed PREA-306-resolution.md with full analysis
+- File: /movel-plan/PREA-306-resolution.md (93 lines, comprehensive analysis)
+- File: /movel-plan/PREA-306-BLOCKED.txt (this file)

@@ -67,79 +67,110 @@ export function ExperimentalMotionStrip() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-black"
-      style={{ height: "60vh", minHeight: "400px" }}
+      className="bg-black"
       aria-label="Galeria de projetos em vídeo"
     >
-      <AnimatePresence mode="wait">
+      {/* Section header — connects this block to the surrounding narrative */}
+      <div className="container mx-auto px-6 md:px-12 pt-16 pb-10">
         <motion.div
-          key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-          className="absolute inset-0"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6 }}
         >
-          <video
-            ref={(el) => { videoRefs.current[current] = el; }}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-            poster={reels[current].poster}
-            aria-label={reels[current].caption}
-            preload="metadata"
+          <p
+            className="text-xs tracking-[0.2em] uppercase font-semibold mb-3"
+            style={{ color: "var(--color-yellow-primary, #F8E058)" }}
           >
-            <source src={reels[current].src} type="video/mp4" />
-          </video>
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
-
-          {/* Caption */}
-          <div className="absolute bottom-8 left-0 right-0 px-8 md:px-16 text-center">
-            <p
-              className="text-sm md:text-base font-light"
-              style={{ color: "var(--color-white-off, #F5F2EA)" }}
-            >
-              {reels[current].caption}
-            </p>
-          </div>
+            Em Vídeo
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+            Projetos em Movimento
+          </h2>
+          <p
+            className="mt-3 text-sm font-light max-w-md"
+            style={{ color: "rgba(245,242,234,0.6)" }}
+          >
+            Cada vídeo mostra um espaço transformado — da concepção ao acabamento final.
+          </p>
         </motion.div>
-      </AnimatePresence>
+      </div>
 
-      {/* Navigation buttons */}
-      <button
-        onClick={() => go("prev")}
-        aria-label="Projeto anterior"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/40 hover:bg-black/70 transition-colors focus-visible:outline focus-visible:outline-2"
-        style={{ outlineColor: "var(--color-yellow-primary, #F8E058)" }}
+      {/* Video strip */}
+      <div
+        className="relative overflow-hidden"
+        style={{ height: "60vh", minHeight: "380px" }}
       >
-        <ChevronLeft className="w-5 h-5 text-white" />
-      </button>
-      <button
-        onClick={() => go("next")}
-        aria-label="Próximo projeto"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/40 hover:bg-black/70 transition-colors focus-visible:outline focus-visible:outline-2"
-        style={{ outlineColor: "var(--color-yellow-primary, #F8E058)" }}
-      >
-        <ChevronRight className="w-5 h-5 text-white" />
-      </button>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="absolute inset-0"
+          >
+            <video
+              ref={(el) => { videoRefs.current[current] = el; }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+              poster={reels[current].poster}
+              aria-label={reels[current].caption}
+              preload="metadata"
+            >
+              <source src={reels[current].src} type="video/mp4" />
+            </video>
+            {/* Gradient overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
 
-      {/* Dot indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {reels.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            aria-label={`Ir para reel ${i + 1}`}
-            className="w-1.5 h-1.5 transition-all duration-300 focus-visible:outline focus-visible:outline-2"
-            style={{
-              backgroundColor: i === current ? "var(--color-yellow-primary, #F8E058)" : "rgba(255,255,255,0.4)",
-              outlineColor: "var(--color-yellow-primary, #F8E058)",
-            }}
-          />
-        ))}
+            {/* Caption — sits above dot indicators with clear separation */}
+            <div className="absolute bottom-14 left-0 right-0 px-8 md:px-16 text-center">
+              <p
+                className="text-sm md:text-base font-light"
+                style={{ color: "var(--color-white-off, #F5F2EA)" }}
+              >
+                {reels[current].caption}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation buttons */}
+        <button
+          onClick={() => go("prev")}
+          aria-label="Projeto anterior"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-4 bg-black/40 hover:bg-black/70 transition-colors focus-visible:outline focus-visible:outline-2"
+          style={{ outlineColor: "var(--color-yellow-primary, #F8E058)" }}
+        >
+          <ChevronLeft className="w-5 h-5 text-white" />
+        </button>
+        <button
+          onClick={() => go("next")}
+          aria-label="Próximo projeto"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-4 bg-black/40 hover:bg-black/70 transition-colors focus-visible:outline focus-visible:outline-2"
+          style={{ outlineColor: "var(--color-yellow-primary, #F8E058)" }}
+        >
+          <ChevronRight className="w-5 h-5 text-white" />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {reels.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Ir para reel ${i + 1}`}
+              className="w-2 h-2 transition-all duration-300 focus-visible:outline focus-visible:outline-2"
+              style={{
+                backgroundColor: i === current ? "var(--color-yellow-primary, #F8E058)" : "rgba(255,255,255,0.4)",
+                outlineColor: "var(--color-yellow-primary, #F8E058)",
+              }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -48,10 +48,57 @@ export const movelPlanContent: MovelPlanContent = {
     primaryButton: "Ver Projetos",
     secondaryButton: "Solicitar Orçamento",
   },
-  trustStats: [],
-  differentiators: [],
-  process: [],
-  testimonials: [],
+  trustStats: [
+    { number: "200+", label: "Projetos entregues" },
+    { number: "15", label: "Anos de experiência" },
+    { number: "100%", label: "Garantia nos projetos" },
+  ],
+  differentiators: [
+    {
+      title: "Projeto 3D Gratuito",
+      description: "Visualize seu espaço antes de assinar qualquer contrato.",
+      icon: "cube",
+    },
+    {
+      title: "Materiais de Alto Padrão",
+      description: "MDF premium, ferragens importadas e acabamentos duráveis.",
+      icon: "star",
+    },
+    {
+      title: "Entrega no Prazo",
+      description: "Compromisso com prazo e qualidade em cada projeto.",
+      icon: "check",
+    },
+  ],
+  process: [
+    {
+      step: 1,
+      title: "Consulta Gratuita",
+      description: "Conversamos sobre seu espaço, estilo e orçamento. Presencialmente ou por WhatsApp.",
+    },
+    {
+      step: 2,
+      title: "Projeto 3D",
+      description: "Criamos o projeto personalizado com visualização 3D para você aprovar cada detalhe.",
+    },
+    {
+      step: 3,
+      title: "Fabricação e Entrega",
+      description: "Produzimos com materiais de alto padrão e instalamos com precisão. Garantia total.",
+    },
+  ],
+  testimonials: [
+    {
+      quote: "O projeto ficou exatamente como imaginei. Equipe super profissional, prazo cumprido e acabamento impecável.",
+      author: "Mariana S.",
+      role: "Cliente — Niterói",
+    },
+    {
+      quote: "Transformaram meu apartamento pequeno em algo muito mais funcional e bonito. Recomendo demais!",
+      author: "Rafael T.",
+      role: "Cliente — Barra da Tijuca",
+    },
+  ],
   about: {
     tag: "",
     title: "",

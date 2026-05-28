@@ -81,7 +81,9 @@ export function ExperimentalHero() {
             className="text-base md:text-lg font-light leading-relaxed mb-10 max-w-sm"
             style={{ color: "var(--color-white-off, #F5F2EA)" }}
           >
-            Projetos únicos feitos para você
+            Seu espaço reimaginado com marcenaria sob medida de alto padrão.
+            <br className="hidden md:block" />
+            Atendemos Niterói, Barra e Zona Sul.
           </motion.p>
 
           <motion.div

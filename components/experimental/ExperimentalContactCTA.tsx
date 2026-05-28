@@ -2,6 +2,12 @@
 
 import { motion } from "framer-motion";
 
+const trustSignals = [
+  { label: "Projetos entregues", value: "200+" },
+  { label: "Anos de experiência", value: "15" },
+  { label: "Atendimento", value: "WhatsApp" },
+];
+
 export function ExperimentalContactCTA() {
   return (
     <section
@@ -30,6 +36,7 @@ export function ExperimentalContactCTA() {
             style={{ color: "var(--color-white-off, #F5F2EA)" }}
           >
             Entre em contato e descubra como transformamos seu espaço com móveis planejados de alto padrão.
+            Consulta gratuita, sem compromisso.
           </p>
           <a
             href="https://wa.me/5521992032834"
@@ -44,6 +51,32 @@ export function ExperimentalContactCTA() {
           >
             Solicitar Orçamento
           </a>
+
+          {/* Trust signals */}
+          <div
+            className="mt-12 pt-10 flex flex-wrap justify-center gap-8"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            {trustSignals.map((signal) => (
+              <div key={signal.label} className="text-center">
+                <p className="text-2xl font-bold text-white">{signal.value}</p>
+                <p
+                  className="text-xs uppercase tracking-[0.12em] font-medium mt-1"
+                  style={{ color: "rgba(255,255,255,0.35)" }}
+                >
+                  {signal.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Location trust */}
+          <p
+            className="mt-6 text-xs uppercase tracking-[0.15em]"
+            style={{ color: "rgba(255,255,255,0.2)" }}
+          >
+            Niterói · Barra · Zona Sul
+          </p>
         </motion.div>
       </div>
     </section>

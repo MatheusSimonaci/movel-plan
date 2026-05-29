@@ -1,10 +1,34 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { movelPlanContent } from "@/lib/content/movel-plan";
+
+function useInView(rootMargin = "-20px") {
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible] as const;
+}
 
 export function ExperimentalTestimonialsStrip() {
   const { testimonials } = movelPlanContent;
+  const [headerRef, headerVisible] = useInView("-20px");
+  const [gridRef, gridVisible] = useInView("-20px");
+
   if (!testimonials.length) return null;
 
   return (
@@ -14,29 +38,28 @@ export function ExperimentalTestimonialsStrip() {
       aria-label="Depoimentos de clientes"
     >
       <div className="container mx-auto px-6 md:px-12">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-xs tracking-[0.2em] uppercase font-semibold mb-10 text-center"
+        <p
+          ref={headerRef as React.RefObject<HTMLParagraphElement>}
+          className={`text-xs tracking-[0.2em] uppercase font-semibold mb-10 text-center ${headerVisible ? "exp-animate-in" : "opacity-0"}`}
           style={{ color: "var(--color-yellow-primary, #F8E058)" }}
         >
           O Que Dizem Nossos Clientes
-        </motion.p>
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div
+          ref={gridRef as React.RefObject<HTMLDivElement>}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+        >
           {testimonials.map((t, idx) => (
-            <motion.blockquote
+            <blockquote
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20px" }}
-              transition={{ duration: 0.55, delay: idx * 0.1 }}
-              className="p-8"
-              style={{ backgroundColor: "#0F0F0E", border: "1px solid rgba(255,255,255,0.06)" }}
+              className={gridVisible ? "p-8 exp-animate-in" : "p-8 opacity-0"}
+              style={{
+                backgroundColor: "#0F0F0E",
+                border: "1px solid rgba(255,255,255,0.06)",
+                ...(gridVisible ? { animationDelay: `${idx * 100}ms` } : {}),
+              }}
             >
-              {/* Quote mark */}
               <span
                 className="block text-4xl font-bold leading-none mb-4"
                 style={{ color: "rgba(248,224,88,0.3)" }}
@@ -59,7 +82,7 @@ export function ExperimentalTestimonialsStrip() {
                   {t.role}
                 </p>
               </footer>
-            </motion.blockquote>
+            </blockquote>
           ))}
         </div>
       </div>

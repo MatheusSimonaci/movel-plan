@@ -84,3 +84,39 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ── /experimental perf: CSS entrance animations replacing framer-motion ── */
+@keyframes expFadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Used by ExperimentalHero for text entrance (replaces motion initial/animate) */
+.hero-fade-up {
+  opacity: 0;
+  animation: expFadeSlideUp 0.8s ease-out forwards;
+}
+
+.hero-fade-in-delayed {
+  opacity: 0;
+  animation: expFadeIn 1s 1.6s ease-out forwards;
+}
+
+/* Used by below-fold strips via IntersectionObserver */
+.exp-animate-in {
+  animation: expFadeSlideUp 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up,
+  .hero-fade-in-delayed,
+  .exp-animate-in {
+    animation: none;
+    opacity: 1;
+  }
+}

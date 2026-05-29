@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "lighthouse": "lighthouse http://localhost:3000/experimental --headless=new --output-path=./lighthouse-report.html --output=html",
     "test:visual": "playwright test tests/visual-responsive.spec.ts",
     "test:visual:ui": "playwright test tests/visual-responsive.spec.ts --ui",
     "test:visual:debug": "playwright test tests/visual-responsive.spec.ts --debug"

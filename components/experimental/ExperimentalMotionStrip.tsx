@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const reels = [
@@ -22,10 +21,32 @@ const reels = [
   },
 ];
 
+function useInView(rootMargin = "-40px") {
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible] as const;
+}
+
 export function ExperimentalMotionStrip() {
   const [current, setCurrent] = useState(0);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([null, null, null]);
   const sectionRef = useRef<HTMLElement>(null);
+  const [headerRef, headerVisible] = useInView("-40px");
 
   const go = (dir: "prev" | "next") => {
     setCurrent((c) => (dir === "next" ? (c + 1) % reels.length : (c - 1 + reels.length) % reels.length));
@@ -70,13 +91,11 @@ export function ExperimentalMotionStrip() {
       className="bg-black"
       aria-label="Galeria de projetos em vídeo"
     >
-      {/* Section header — connects this block to the surrounding narrative */}
+      {/* Section header — CSS fade-in replacing framer-motion whileInView */}
       <div className="container mx-auto px-6 md:px-12 pt-16 pb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6 }}
+        <div
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={headerVisible ? "exp-animate-in" : "opacity-0"}
         >
           <p
             className="text-xs tracking-[0.2em] uppercase font-semibold mb-3"
@@ -93,50 +112,45 @@ export function ExperimentalMotionStrip() {
           >
             Cada vídeo mostra um espaço transformado — da concepção ao acabamento final.
           </p>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Video strip */}
+      {/* Video strip — CSS opacity crossfade replacing AnimatePresence */}
       <div
         className="relative overflow-hidden"
         style={{ height: "60vh", minHeight: "380px" }}
       >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="absolute inset-0"
+        {reels.map((reel, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 transition-opacity duration-[400ms]"
+            style={{ opacity: i === current ? 1 : 0, pointerEvents: i === current ? "auto" : "none" }}
+            aria-hidden={i !== current}
           >
             <video
-              ref={(el) => { videoRefs.current[current] = el; }}
-              autoPlay
+              ref={(el) => { videoRefs.current[i] = el; }}
               muted
               loop
               playsInline
               className="w-full h-full object-cover"
-              poster={reels[current].poster}
-              aria-label={reels[current].caption}
+              poster={reel.poster}
+              aria-label={reel.caption}
               preload="metadata"
             >
-              <source src={reels[current].src} type="video/mp4" />
+              <source src={reel.src} type="video/mp4" />
             </video>
-            {/* Gradient overlays */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
 
-            {/* Caption — sits above dot indicators with clear separation */}
             <div className="absolute bottom-14 left-0 right-0 px-8 md:px-16 text-center">
               <p
                 className="text-sm md:text-base font-light"
                 style={{ color: "var(--color-white-off, #F5F2EA)" }}
               >
-                {reels[current].caption}
+                {reel.caption}
               </p>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        ))}
 
         {/* Navigation buttons */}
         <button

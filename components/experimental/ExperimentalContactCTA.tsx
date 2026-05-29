@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const trustSignals = [
   { label: "Projetos entregues", value: "200+" },
@@ -8,7 +8,30 @@ const trustSignals = [
   { label: "Atendimento", value: "WhatsApp" },
 ];
 
+function useInView(rootMargin = "-60px") {
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible] as const;
+}
+
 export function ExperimentalContactCTA() {
+  const [contentRef, contentVisible] = useInView("-60px");
+
   return (
     <section
       className="py-24 md:py-32"
@@ -16,11 +39,9 @@ export function ExperimentalContactCTA() {
       aria-label="Fale conosco"
     >
       <div className="container mx-auto px-6 md:px-12 max-w-2xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7 }}
+        <div
+          ref={contentRef as React.RefObject<HTMLDivElement>}
+          className={contentVisible ? "exp-animate-in" : "opacity-0"}
         >
           <p
             className="text-xs tracking-[0.2em] uppercase font-semibold mb-5"
@@ -52,7 +73,6 @@ export function ExperimentalContactCTA() {
             Solicitar Orçamento
           </a>
 
-          {/* Trust signals */}
           <div
             className="mt-12 pt-10 flex flex-wrap justify-center gap-8"
             style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
@@ -70,14 +90,13 @@ export function ExperimentalContactCTA() {
             ))}
           </div>
 
-          {/* Location trust */}
           <p
             className="mt-6 text-xs uppercase tracking-[0.15em]"
             style={{ color: "rgba(255,255,255,0.2)" }}
           >
             Niterói · Barra · Zona Sul
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

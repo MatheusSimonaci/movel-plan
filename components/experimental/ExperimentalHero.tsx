@@ -1,21 +1,14 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 
 export function ExperimentalHero() {
-  const ref = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  // Scroll-driven parallax — requires framer-motion MotionValues
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacityText = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const scaleVideo = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+  const videoWrapRef = useRef<HTMLDivElement>(null);
+  const textWrapRef = useRef<HTMLDivElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -23,36 +16,82 @@ export function ExperimentalHero() {
     }
   }, []);
 
+  // Vanilla JS scroll parallax — framer-motion removed from initial bundle
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    let rafId: number;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const sectionH = section.offsetHeight;
+        const scrollTop = window.scrollY;
+        const progress = Math.max(0, Math.min(1, scrollTop / sectionH));
+
+        if (videoWrapRef.current) {
+          const scale = 1 + progress * 0.12;
+          videoWrapRef.current.style.transform = `scale(${scale})`;
+        }
+        if (textWrapRef.current) {
+          const yPct = progress * 30;
+          const opacity = Math.max(0, 1 - progress / 0.6);
+          textWrapRef.current.style.transform = `translateY(${yPct}%)`;
+          textWrapRef.current.style.opacity = String(opacity);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
     <section
       id="hero"
-      ref={ref}
+      ref={sectionRef}
       className="relative flex items-end justify-start overflow-hidden bg-black"
       style={{ height: "100svh", minHeight: "600px" }}
       aria-label="Hero - Móvel Plan Experimental"
     >
-      {/* Background video — scale driven by scroll */}
-      <motion.div style={{ scale: scaleVideo }} className="absolute inset-0 z-0">
+      {/* Background layer — scale driven by scroll */}
+      <div ref={videoWrapRef} className="absolute inset-0 z-0" style={{ transformOrigin: "center center" }}>
+        {/*
+          Priority Image acts as LCP resource with fetchpriority=high + head preload (injected by Next.js).
+          Shows instantly; the video fades in on top once it can play.
+        */}
+        <Image
+          src="/assets/movel-plan/DYPtgxORg-Q-poster.webp"
+          alt="Sala planejada Móvel Plan"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
         <video
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
-          poster="/assets/movel-plan/DYPtgxORg-Q-poster.webp"
+          preload="none"
+          onCanPlay={() => setVideoReady(true)}
           aria-label="Vídeo de sala planejada"
-          preload="metadata"
+          className="w-full h-full object-cover absolute inset-0 transition-opacity duration-700"
+          style={{ opacity: videoReady ? 1 : 0 }}
         >
           <source src="/assets/movel-plan/DYPtgxORg-Q.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
-      </motion.div>
+      </div>
 
       {/* Text content — y/opacity driven by scroll; entrance via CSS */}
       <div className="container relative z-10 px-6 md:px-12 mx-auto pb-28 md:pb-36">
-        <motion.div style={{ y: yText, opacity: opacityText }} className="max-w-2xl text-left">
+        <div ref={textWrapRef} className="max-w-2xl text-left">
           <p
             className="text-xs tracking-[0.2em] uppercase font-semibold mb-5 hero-fade-up"
             style={{ color: "var(--color-yellow-primary, #F8E058)", animationDelay: "0ms" }}
@@ -91,13 +130,11 @@ export function ExperimentalHero() {
               Ver Projetos
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator — CSS fade-in after 1.6s */}
-      <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:block hero-fade-in-delayed"
-      >
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:block hero-fade-in-delayed">
         <div
           className="w-[1px] h-16"
           style={{ backgroundImage: "linear-gradient(to bottom, #F8E058 0%, transparent 100%)" }}

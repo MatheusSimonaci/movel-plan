@@ -2,85 +2,124 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design Tokens — DESIGN-SYSTEM.md V1 (Florense-inspired luxury) */
+/* Design Tokens — Atelier V2 (warm light editorial) */
 :root {
-  /* Palette */
-  --background: #050505;
-  --foreground: #FFFFFF;
-  --card: #1A1A19;
-  --card-foreground: #FFFFFF;
-  --popover: #1A1A19;
-  --popover-foreground: #FFFFFF;
-  --primary: #F8E058;         /* brand yellow accent */
-  --primary-foreground: #050505;
-  --secondary: #1A1A19;       /* surface / elevated layers */
-  --secondary-foreground: #FFFFFF;
-  --muted: #272727;           /* dividers, disabled states */
-  --muted-foreground: #9A9A9A; /* secondary text, captions */
-  --accent: #F8E058;
-  --accent-foreground: #050505;
-  --destructive: #EF4444;
-  --border: #272727;
-  --input: #272727;
-  --ring: #F8E058;
-  --chart-1: #F8E058;
-  --chart-2: #FFFFFF;
-  --chart-3: #9A9A9A;
-  --chart-4: #272727;
-  --chart-5: #1A1A19;
+  /* Color */
+  --color-bone: #F4EFE7;
+  --color-bone-50: #FAF7F1;
+  --color-linen: #E8E1D5;
+  --color-clay: #B6A593;
+  --color-ink: #1B1614;
+  --color-ink-soft: #3A322E;
+  --color-ink-muted: #6E665F;
+  --color-ink-line: #CCC3B5;
+  --color-brass: #A78A55;
+  --color-brass-ink: #6F5A33;
+  --color-walnut: #2A211C;
+  --color-walnut-soft: #3A2F28;
+  --color-on-walnut: #F4EFE7;
+  --color-on-walnut-muted: #B6A593;
+  --color-white: #FFFFFF;
+  --color-danger: #8A3324;
+  --color-focus-ring: rgba(167, 138, 85, 0.45);
 
-  /* Border radius — default to sharp/subtle for luxury aesthetic */
-  --radius: 0.25rem;          /* 4px base; use sparingly */
+  /* Space (4-px base) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 160px;
 
-  /* Custom off-white for subheadlines and body copy */
-  --color-white-off: #F5F2EA;
+  /* Radius */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
 
-  --sidebar: #050505;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #F8E058;
-  --sidebar-primary-foreground: #050505;
-  --sidebar-accent: #1A1A19;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #272727;
-  --sidebar-ring: #F8E058;
-}
+  /* Shadow */
+  --shadow-xs: 0 1px 2px rgba(27, 22, 20, 0.04);
+  --shadow-sm: 0 2px 6px rgba(27, 22, 20, 0.06);
+  --shadow-md: 0 8px 24px -8px rgba(27, 22, 20, 0.10);
+  --shadow-lg: 0 24px 48px -16px rgba(27, 22, 20, 0.16);
+  --shadow-portrait: 0 32px 80px -24px rgba(27, 22, 20, 0.22);
+  --shadow-focus: 0 0 0 3px var(--color-focus-ring);
 
-.dark {
-  --background: #050505;
-  --foreground: #FFFFFF;
-  --card: #1A1A19;
-  --card-foreground: #FFFFFF;
-  --popover: #1A1A19;
-  --popover-foreground: #FFFFFF;
-  --primary: #F8E058;
-  --primary-foreground: #050505;
-  --secondary: #1A1A19;
-  --secondary-foreground: #FFFFFF;
-  --muted: #272727;
-  --muted-foreground: #9A9A9A;
-  --accent: #F8E058;
-  --accent-foreground: #050505;
-  --destructive: #EF4444;
-  --border: #272727;
-  --input: #272727;
-  --ring: #F8E058;
-  --chart-1: #F8E058;
-  --chart-2: #FFFFFF;
-  --chart-3: #9A9A9A;
-  --chart-4: #272727;
-  --chart-5: #1A1A19;
-  --sidebar: #050505;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #F8E058;
-  --sidebar-primary-foreground: #050505;
-  --sidebar-accent: #1A1A19;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #272727;
-  --sidebar-ring: #F8E058;
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --dur-fast: 150ms;
+  --dur-base: 280ms;
+  --dur-slow: 520ms;
+
+  /* shadcn-compat aliases */
+  --background: var(--color-bone);
+  --foreground: var(--color-ink);
+  --card: var(--color-bone-50);
+  --card-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-bone);
+  --secondary: var(--color-linen);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-linen);
+  --muted-foreground: var(--color-ink-muted);
+  --accent: var(--color-brass);
+  --accent-foreground: var(--color-ink);
+  --border: var(--color-ink-line);
+  --input: var(--color-ink-line);
+  --ring: var(--color-brass);
+  --radius: var(--radius-sm);
+  --destructive: var(--color-danger);
+  --popover: var(--color-bone-50);
+  --popover-foreground: var(--color-ink);
 }
 
 @layer base {
-  body {
-    @apply bg-background text-foreground;
+  html, body {
+    background: var(--color-bone);
+    color: var(--color-ink-soft);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Atelier entrance animations (replaces framer-motion, respects prefers-reduced-motion above) ── */
+@keyframes atelierFadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes atelierFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.atelier-fade-up {
+  opacity: 0;
+  animation: atelierFadeSlideUp var(--dur-slow) var(--ease-out) forwards;
+}
+
+.atelier-fade-in-delayed {
+  opacity: 0;
+  animation: atelierFadeIn var(--dur-slow) 1.4s var(--ease-out) forwards;
+}
+
+.atelier-animate-in {
+  animation: atelierFadeSlideUp var(--dur-base) var(--ease-out) both;
 }

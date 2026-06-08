@@ -14,18 +14,15 @@ export default function ExperimentalLayout({
 }) {
   return (
     <>
-      {/* Experimental banner — clearly isolated from production */}
       <div
-        className="sticky top-0 z-50 flex items-center justify-between px-6 py-2 text-xs font-semibold uppercase tracking-widest"
-        style={{ backgroundColor: "#F8E058", color: "#050505" }}
+        className="sticky top-0 z-50 flex items-center justify-between px-6 py-2 text-eyebrow uppercase font-medium bg-linen border-b border-ink-line text-ink-muted"
         role="banner"
         aria-label="Aviso de rota experimental"
       >
-        <span>⚗ Experimento PREA-308 — não é produção</span>
+        <span>⚗ Experimento — não é produção</span>
         <Link
           href="/"
-          className="underline hover:no-underline focus-visible:outline focus-visible:outline-2"
-          style={{ outlineColor: "#050505" }}
+          className="underline hover:no-underline focus-visible:outline focus-visible:outline-1 focus-visible:outline-brass"
         >
           Ir para site principal →
         </Link>

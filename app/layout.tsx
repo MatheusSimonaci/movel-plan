@@ -4,7 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +22,7 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://movelplan.com.br"),
   title: "Móvel Plan | Móveis Planejados Personalizados",
   description: "Projetos planejados sob medida para Niterói, Barra e Zona Sul. Salas, quartos, cozinhas e banheiros com acabamentos de alto padrão.",
   openGraph: {
@@ -46,7 +46,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        <CustomCursor />
         <SmoothScroll>
           <Header />
           <main className="flex-1">{children}</main>

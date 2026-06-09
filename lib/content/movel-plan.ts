@@ -1,66 +1,20 @@
 import { SiteContent } from "./types";
 
-export interface StatItem {
-  number: string;
-  label: string;
-}
-
-export interface DifferentiatorItem {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface ProcessStep {
-  step: number;
-  title: string;
-  description: string;
-}
-
-export interface PortfolioItem {
-  id: string;
-  title: string;
-  category: "Salas" | "Quartos / Closets" | "Cozinhas" | "Banheiros / Lavabos";
-  image: string;
-  video?: string;
-  poster?: string;
-  description: string;
-  materials?: string[];
-  instagramUrl?: string;
-}
-
-export interface MovelPlanContent extends SiteContent {
-  trustStats: StatItem[];
-  differentiators: DifferentiatorItem[];
-  process: ProcessStep[];
-  testimonials: {
-    quote: string;
-    author: string;
-    role: string;
-  }[];
-  portfolio: PortfolioItem[];
-}
-
-export const movelPlanContent: MovelPlanContent = {
+export const movelPlanContent: SiteContent = {
+  site: {
+    name: "Móvel Plan",
+    whatsapp: "5521992032834",
+    phoneDisplay: "(21) 99203-2834",
+    instagramUrl: "https://www.instagram.com/movel.plan/",
+    areas: "Niterói · Barra · Zona Sul",
+    logo: "/assets/movel-plan/profile-logo.webp",
+  },
   hero: {
-    headline: "Móveis Planejados Personalizados",
-    subheadline: "Projetos únicos feitos para você",
+    eyebrow: "Niterói · Barra · Zona Sul",
+    headline: "Móveis planejados",
+    headlineAccent: "sob medida",
+    subheadline: "Projetos únicos, desenhados para o seu espaço.",
     primaryButton: "Ver Projetos",
-    secondaryButton: "Solicitar Orçamento",
-  },
-  trustStats: [],
-  differentiators: [],
-  process: [],
-  testimonials: [],
-  about: {
-    tag: "",
-    title: "",
-    description: "",
-  },
-  services: {
-    title: "",
-    subtitle: "",
-    items: [],
   },
   portfolio: [
     {
@@ -126,4 +80,14 @@ export const movelPlanContent: MovelPlanContent = {
       instagramUrl: "https://www.instagram.com/p/DNWuNiPp41Z/",
     },
   ],
+  portfolioCategories: ["Todos", "Salas", "Quartos / Closets", "Cozinhas", "Banheiros / Lavabos"],
+  contact: {
+    eyebrow: "Contato",
+    headline: "Vamos planejar o seu próximo ambiente?",
+    subheadline: "Conte sua ideia e receba um orçamento sem compromisso.",
+    primaryButton: "Conversar no WhatsApp",
+    secondaryButton: "Ligar Agora",
+  },
 };
+
+export const waLink = (whatsapp: string) => `https://wa.me/${whatsapp}`;

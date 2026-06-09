@@ -1,42 +1,49 @@
 "use client";
 
 import { Phone } from "lucide-react";
+import { movelPlanContent, waLink } from "@/lib/content/movel-plan";
 
 export function Contact() {
+  const { site, contact } = movelPlanContent;
+
   return (
-    <section id="contato" className="py-20 md:py-28 bg-[#050505]">
+    <section id="contato" className="py-28 md:py-40 bg-[#050505] border-t border-white/5">
       <div className="container mx-auto px-6 md:px-10">
-        <div className="max-w-3xl mx-auto border border-[#272727] p-10 md:p-16 text-center bg-[#0B0B0A]">
-          <p className="text-xs tracking-[0.15em] uppercase text-primary font-semibold mb-4">
-            Contato
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-[11px] tracking-[0.25em] uppercase text-primary font-semibold mb-5">
+            {contact.eyebrow}
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-            Pronto para começar?
+          <h2 className="font-display font-medium text-4xl sm:text-5xl md:text-7xl text-white mb-6 leading-[1.05] tracking-tight">
+            {contact.headline}
           </h2>
           <p
-            className="text-sm leading-relaxed mb-10 max-w-sm mx-auto"
+            className="text-base leading-relaxed mb-12 max-w-md mx-auto font-light"
             style={{ color: "var(--color-white-off, #F5F2EA)" }}
           >
-            Transforme seu espaço com projetos planejados sob medida. Atendemos Niterói, Barra e Zona Sul.
+            {contact.subheadline}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a
-              href="https://wa.me/5521992032834"
+              href={waLink(site.whatsapp)}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-widest transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-[0.18em] transition-opacity hover:opacity-90"
             >
-              Conversar no WhatsApp
+              {contact.primaryButton}
             </a>
             <a
-              href="tel:+5521992032834"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 border border-[#272727] text-white/70 text-sm font-medium uppercase tracking-widest hover:border-white/40 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"
+              href={`tel:+${site.whatsapp}`}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 border border-[#272727] text-white/70 text-sm font-medium uppercase tracking-[0.18em] hover:border-white/40 hover:text-white transition-colors"
             >
-              <Phone className="w-4 h-4" />
-              Ligar Agora
+              <Phone className="w-4 h-4" aria-hidden="true" />
+              {contact.secondaryButton}
             </a>
           </div>
+
+          <p className="text-[11px] uppercase tracking-[0.2em] text-white/35 mt-12">
+            {site.areas}
+          </p>
         </div>
       </div>
     </section>

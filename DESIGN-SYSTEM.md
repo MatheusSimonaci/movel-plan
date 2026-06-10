@@ -1,9 +1,22 @@
-# Móvel Plan — Design System V1 (Florense-Inspired Luxury)
+# Móvel Plan — Design System V2 (Soft-Modern Luxury)
 
-**Status:** Final UX design direction approved for implementation handoff  
-**Prepared by:** UXDesigner  
-**Date:** 2026-05-25  
-**Supersedes:** DESIGN.md (V1 cinematic foundation remains; palette, IA, and component guidelines evolved per PREA-299)
+**Status:** V2 implementado em 09/06/2026  
+**Supersedes:** V1 Florense-Inspired (cantos retos). Paleta, princípios e taxonomia do V1 permanecem válidos; a camada de forma e efeitos mudou.
+
+## V2 — O que mudou
+
+| Aspecto | V1 (retirado) | V2 (vigente) |
+| --- | --- | --- |
+| Border radius | `--radius: 0.25rem`, cantos retos por toda parte | `--radius: 1rem`; cards `rounded-[1.75rem]`, painéis `rounded-[2rem+]`, botões/chips **pílula** (`rounded-full`) |
+| Tipografia display | Sans (Geist) em todos os títulos | **Cormorant Garamond** (`font-display`) em hero, headings, cards e modal; itálico como acento |
+| Superfícies | Bordas sólidas `#272727` | **Glass**: utilitário `.glass` (`border-white/10 + bg-white/[0.04] + backdrop-blur-xl`) |
+| Header | Barra full-width colada no topo | **Pílula flutuante** de vidro (`top-4`, `rounded-full`, max-w-5xl) |
+| Acentos de luz | Nenhum | **Glow radial** âmbar sutil (hero bottom-left, painel de contato) e `shadow` amarela em hover de CTA |
+| Grid portfólio | Uniforme 4:5 | **Bento**: primeiro card em destaque `sm:col-span-2` (16:10 / 2:1) |
+| Elementos vivos | Nenhum | **Marquee** editorial entre hero e portfólio (categorias em serif itálico, `animate-[marquee_45s_linear_infinite]`) |
+| Motion | Entradas on-mount | + `whileInView` no painel de contato; tudo respeita `prefers-reduced-motion` |
+
+Regra de ouro do V2: o "uau" vem de **luz, vidro e forma** — nunca de mais texto, mais cores ou mais elementos. Um glow por seção, no máximo.
 
 ---
 

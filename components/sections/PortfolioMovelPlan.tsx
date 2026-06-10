@@ -47,9 +47,9 @@ export function PortfolioMovelPlan() {
             </h2>
           </div>
 
-          {/* Category filters — underline tabs */}
+          {/* Category filters — glass pill chips */}
           <div
-            className="flex flex-wrap gap-x-5 md:gap-x-8 gap-y-1 border-b border-white/10"
+            className="flex flex-wrap gap-2 md:gap-2.5"
             role="tablist"
             aria-label="Filtrar projetos por ambiente"
           >
@@ -60,27 +60,20 @@ export function PortfolioMovelPlan() {
                 aria-selected={activeCategory === category}
                 onClick={() => setActiveCategory(category)}
                 className={cn(
-                  "relative py-3 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors duration-200",
+                  "px-5 py-2.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.12em] transition-all duration-200",
                   activeCategory === category
-                    ? "text-white"
-                    : "text-white/40 hover:text-white/75"
+                    ? "bg-primary text-primary-foreground border border-primary shadow-[0_0_20px_rgba(248,224,88,0.25)]"
+                    : "glass text-white/55 hover:text-white hover:border-white/25"
                 )}
               >
                 {category}
-                {activeCategory === category && (
-                  <motion.span
-                    layoutId="portfolio-tab-underline"
-                    transition={{ duration: reducedMotion ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-primary"
-                  />
-                )}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Portfolio Grid — sharp corners, 4:5 aspect, poster-first */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* Portfolio Grid — bento: primeiro card em destaque */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
               <motion.button
@@ -91,7 +84,10 @@ export function PortfolioMovelPlan() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3, delay: index * 0.04 }}
                 whileTap={{ scale: 0.99 }}
-                className="group relative aspect-[4/5] overflow-hidden cursor-pointer w-full text-left bg-[#1A1A19]"
+                className={cn(
+                  "group relative overflow-hidden cursor-pointer w-full text-left bg-[#1A1A19] rounded-[1.75rem] ring-1 ring-white/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-20px_rgba(0,0,0,0.9),0_0_30px_-10px_rgba(248,224,88,0.12)] hover:ring-white/20",
+                  index === 0 ? "aspect-[4/5] sm:col-span-2 sm:aspect-[16/10] lg:aspect-[2/1]" : "aspect-[4/5]"
+                )}
                 onClick={() => setSelectedProject(project)}
                 aria-label={`Ver detalhes: ${project.title}`}
               >
@@ -151,11 +147,11 @@ export function PortfolioMovelPlan() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: reducedMotion ? 0 : 60, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full md:max-w-5xl bg-[#0B0B0A] border border-[#272727] overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[92vh] md:max-h-[88vh] rounded-t-lg md:rounded-none"
+              className="relative w-full md:max-w-5xl bg-[#0B0B0A] border border-white/10 overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[92vh] md:max-h-[88vh] rounded-t-[2rem] md:rounded-[2rem]"
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-4 right-4 z-20 p-2.5 bg-black/60 text-white hover:text-primary transition-colors"
+                className="absolute top-4 right-4 z-20 p-2.5 rounded-full glass text-white hover:text-primary transition-colors"
                 onClick={() => setSelectedProject(null)}
                 aria-label="Fechar"
               >
@@ -199,7 +195,7 @@ export function PortfolioMovelPlan() {
                     {selectedProject.materials.map((m) => (
                       <span
                         key={m}
-                        className="px-3 py-1 border border-[#272727] text-[11px] uppercase tracking-[0.1em] text-muted-foreground"
+                        className="px-3.5 py-1.5 rounded-full glass text-[11px] uppercase tracking-[0.1em] text-muted-foreground"
                       >
                         {m}
                       </span>
@@ -219,7 +215,7 @@ export function PortfolioMovelPlan() {
                     href={waLink(movelPlanContent.site.whatsapp)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-full py-4 bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-[0.18em] transition-opacity hover:opacity-90"
+                    className="flex items-center justify-center w-full py-4 rounded-full bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-[0.18em] transition-all hover:shadow-[0_0_32px_rgba(248,224,88,0.3)]"
                   >
                     Quero um Projeto Como Este
                   </a>
@@ -228,7 +224,7 @@ export function PortfolioMovelPlan() {
                       href={selectedProject.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center w-full py-3 border border-[#272727] text-white/60 text-xs uppercase tracking-widest hover:text-white hover:border-white/30 transition-colors"
+                      className="flex items-center justify-center w-full py-3 rounded-full glass text-white/60 text-xs uppercase tracking-widest hover:text-white hover:border-white/25 transition-colors"
                     >
                       Ver no Instagram
                     </a>

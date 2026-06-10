@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-3">
-              <div className="w-7 h-7 overflow-hidden border border-white/10">
+              <div className="w-7 h-7 overflow-hidden rounded-full border border-white/10">
                 <img
                   src={site.logo}
                   alt={`${site.name} Logo`}

@@ -69,6 +69,8 @@ export function HeroMovelPlan({ content, videoUrl, fallbackImageUrl }: HeroMovel
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/10" />
         {/* Left vignette for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
+        {/* Ambient brand glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(248,224,88,0.10),transparent_55%)]" />
       </motion.div>
 
       <div className="container relative z-10 px-6 md:px-10 mx-auto h-full flex flex-col justify-end pb-24 md:pb-32">
@@ -112,7 +114,7 @@ export function HeroMovelPlan({ content, videoUrl, fallbackImageUrl }: HeroMovel
           >
             <a
               href="#portfolio"
-              className="group inline-flex items-center gap-3 px-10 py-4 bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-200 hover:gap-4 hover:opacity-90"
+              className="group inline-flex items-center gap-3 px-10 py-4 rounded-full bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-200 hover:gap-4 hover:shadow-[0_0_40px_rgba(248,224,88,0.35)]"
             >
               {content.primaryButton}
               <span aria-hidden="true" className="text-base leading-none">↓</span>

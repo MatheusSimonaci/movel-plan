@@ -1,4 +1,5 @@
 import { HeroMovelPlan } from "@/components/sections/HeroMovelPlan";
+import { MarqueeStrip } from "@/components/sections/MarqueeStrip";
 import { PortfolioMovelPlan } from "@/components/sections/PortfolioMovelPlan";
 import { Contact } from "@/components/sections/Contact";
 import { movelPlanContent } from "@/lib/content/movel-plan";
@@ -12,8 +13,8 @@ export default function Home() {
         fallbackImageUrl="/assets/movel-plan/DYPtgxORg-Q-poster.webp"
       />
       
-      {/* V1 Portfolio-First: TrustStats, Differentiators, Process and Testimonials removed */}
-      
+      <MarqueeStrip />
+
       <PortfolioMovelPlan />
       
       <Contact />

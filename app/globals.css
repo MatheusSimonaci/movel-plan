@@ -29,8 +29,8 @@
   --chart-4: #272727;
   --chart-5: #1A1A19;
 
-  /* Border radius — default to sharp/subtle for luxury aesthetic */
-  --radius: 0.25rem;          /* 4px base; use sparingly */
+  /* Border radius — soft-modern luxury (V2) */
+  --radius: 1rem;
 
   /* Custom off-white for subheadlines and body copy */
   --color-white-off: #F5F2EA;
@@ -107,5 +107,20 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
   }
 }

@@ -17,14 +17,14 @@ export function Header() {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/85 backdrop-blur-md"
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-4 inset-x-0 z-50 px-4 md:px-6"
     >
-      <div className="container mx-auto flex items-center justify-between px-6 md:px-10 h-16">
+      <div className="mx-auto max-w-5xl flex items-center justify-between h-14 pl-3 pr-3 md:pl-4 md:pr-2.5 rounded-full glass shadow-[0_8px_40px_-12px_rgba(0,0,0,0.7)]">
         <Link href="/" className="z-50 flex items-center gap-3">
-          <div className="w-8 h-8 overflow-hidden border border-white/10">
+          <div className="w-8 h-8 overflow-hidden rounded-full border border-white/10">
             <img
               src={site.logo}
               alt={`${site.name} Logo`}
@@ -38,7 +38,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8" aria-label="Navegação principal">
+        <nav className="hidden md:flex items-center gap-7" aria-label="Navegação principal">
           {navLinks.map((item) => (
             <Link
               key={item.name}
@@ -56,7 +56,7 @@ export function Header() {
             href={waLink(site.whatsapp)}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2.5 bg-primary text-primary-foreground text-[11px] font-semibold uppercase tracking-[0.14em] transition-opacity hover:opacity-90"
+            className="px-6 py-2.5 rounded-full bg-primary text-primary-foreground text-[11px] font-semibold uppercase tracking-[0.14em] transition-all duration-200 hover:shadow-[0_0_24px_rgba(248,224,88,0.35)]"
           >
             Orçamento
           </a>
@@ -78,7 +78,7 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="fixed inset-0 h-[100dvh] w-screen bg-[#050505] z-40 flex flex-col items-center justify-center gap-10"
+              className="fixed inset-0 h-[100dvh] w-screen bg-[#050505]/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center gap-10"
               aria-label="Menu móvel"
             >
               {navLinks.map((item, i) => (
@@ -105,7 +105,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
-                className="px-8 py-4 bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-[0.18em] hover:opacity-90 transition-opacity"
+                className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm font-semibold uppercase tracking-[0.18em] hover:shadow-[0_0_32px_rgba(248,224,88,0.4)] transition-shadow"
               >
                 Pedir Orçamento
               </motion.a>
